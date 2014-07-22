@@ -1,5 +1,11 @@
 <!--
 Shows the names of the days of the week, e.g., for use as a calendar header.
+
+To the degree possible, all language/culture-specific aspects of this component
+are localizable with the Globalize library (https://github.com/jquery/globalize).
+
+@element basic-days-of-week
+@demo http://basic-web-components.github.io/components/basic-days-of-week/
 -->
 
 <link rel="import" href="../basic-element/basic-element.html">
@@ -19,6 +25,7 @@ Shows the names of the days of the week, e.g., for use as a calendar header.
   }
 
   :host([generic]) .dayOfWeek {
+    padding: 4px;
     text-align: center;
   }
   </style>
@@ -73,12 +80,25 @@ BasicDaysOfWeek = {
 
 Polymer( "basic-days-of-week", {
 
-  applyAuthorStyles: true,
+  /**
+   * The Globalize culture/language assigned to this element.
+   *
+   * @attribute culture
+   */
+  culture: null,
 
   cultureChanged: function() {
     this._refresh();
   },
 
+  /**
+   * The format used to render the names of the days of the week.
+   * Valid values are: "namesAbbr" (the default), "namesFull", "namesShort".
+   *
+   * @attribute namesAbbr
+   * @type string
+   * @default "namesAbbr"
+   */
   format: "namesAbbr",
 
   formatChanged: function() {
