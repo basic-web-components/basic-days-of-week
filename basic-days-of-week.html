@@ -51,31 +51,31 @@ BasicDaysOfWeek = {
   // Defaults used if Globalize is not loaded.
   days: {
     names: [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday'
     ],
     namesAbbr: [
-      "Sun",
-      "Mon",
-      "Tue",
-      "Wed",
-      "Thu",
-      "Fri",
-      "Sat"
+      'Sun',
+      'Mon',
+      'Tue',
+      'Wed',
+      'Thu',
+      'Fri',
+      'Sat'
     ],
     namesShort: [
-      "Su",
-      "Mo",
-      "Tu",
-      "We",
-      "Th",
-      "Fr",
-      "Sa"
+      'Su',
+      'Mo',
+      'Tu',
+      'We',
+      'Th',
+      'Fr',
+      'Sa'
     ]
   }
 
@@ -102,7 +102,7 @@ Polymer({
    * @type string
    * @default "namesAbbr"
    */
-  format: "namesAbbr",
+  format: 'namesAbbr',
 
   formatChanged: function() {
     this._refresh();
@@ -116,16 +116,16 @@ Polymer({
   _refresh: function() {
     var culture = this.culture;
     var dayNameEnum = culture ? culture.calendar.days : BasicDaysOfWeek.days;
-    var dayNames = dayNameEnum[ this.format ];
+    var dayNames = dayNameEnum[this.format];
     var firstDayOfWeek = culture ? culture.calendar.firstDay : 0;
-    var daysOfWeek = this.shadowRoot.querySelectorAll( ".dayOfWeek" ).array();
-    daysOfWeek.forEach( function( day, i ) {
-      var dayOfWeek = ( firstDayOfWeek + i ) % 7;
-      var weekend = ( dayOfWeek === 0 || dayOfWeek === 6 );
-      var dayName = dayNames[ dayOfWeek ];
+    var daysOfWeek = this.shadowRoot.querySelectorAll('.dayOfWeek').array();
+    daysOfWeek.forEach(function(day, i) {
+      var dayOfWeek = (firstDayOfWeek + i) % 7;
+      var weekend = (dayOfWeek === 0 || dayOfWeek === 6);
+      var dayName = dayNames[dayOfWeek];
       day.textContent = dayName;
-      day.classList.toggle( "weekend", weekend );
-      day.classList.toggle( "weekday", !weekend );
+      day.classList.toggle('weekend', weekend);
+      day.classList.toggle('weekday', !weekend);
     });
   }
 
